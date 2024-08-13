@@ -1,0 +1,41 @@
+sem 17
+def recomendar_sala(numero_participantes, tipo_reuniao):
+  # Validação das entradas
+  if not isinstance(numero_participantes, int) or numero_participantes < 0:
+      return "Número de participantes inválido. Deve ser um número inteiro não negativo."
+
+  if tipo_reuniao not in ["normal", "executiva"]:
+      return "Tipo de reunião inválido. Deve ser 'normal' ou 'executiva'."
+
+  # Determinando a sala com base nas regras fornecidas
+  if tipo_reuniao == "executiva" or numero_participantes > 15:
+      return "Sala Grande"
+  elif 6 <= numero_participantes <= 15:
+      return "Sala Média"
+  elif 0 <= numero_participantes <= 5:
+      return "Sala Pequena"
+  else:
+      return "Número de participantes inválido."
+
+# Interface do usuário
+def main():
+  try:
+      numero_participantes = int(input("Digite o número de participantes: "))
+      tipo_reuniao = input("Digite o tipo de reunião ('normal' ou 'executiva'): ").strip().lower()
+
+      recomendacao = recomendar_sala(numero_participantes, tipo_reuniao)
+      print("Recomendação de sala:", recomendacao)
+
+  except ValueError:
+      print("Entrada inválida. Por favor, insira um número inteiro para o número de participantes")
+
+if __name__ == "__main__":
+  main()
+
+
+
+
+
+
+
+
